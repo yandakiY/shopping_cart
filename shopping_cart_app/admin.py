@@ -10,7 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     display_image.short_description = 'Image'
 
     def display_categories(self, obj):
-        return ', '.join([category.name for category in obj.categories.all()])
+        return ', '.join([category.name for category in obj.category.all()])
     display_categories.short_description = 'Categories'
 
 
