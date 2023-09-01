@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Shopping Cart</title>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Settings :</h2>
+    <div class="main" style="display: flex; flex-direction: column ; justify-content: center; align-items: center; height:100vh;">
+        
+        <div style="display: flex;">
+            <div style="background-color: black; border:solid 1px white; padding:30px; font-size:25px; font-weight:bold; border-radius:10px;">
+                <a style="text-decoration: none; color:white;" href="{% url 'shopCart:settings_categories' %}">Settings of Categories</a>
+            </div>
+            <div style="background-color: black; border:solid 1px white;; padding:30px; font-size:25px; font-weight:bold; border-radius:10px;">
+                <a style="text-decoration: none; color:white;" href="{% url 'shopCart:settings_products' %}">Settings of Products</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

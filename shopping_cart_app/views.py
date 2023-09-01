@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect , get_object_or_404
 from django.views import generic
 from .models import Category , Product
 from django.utils.html import escape
@@ -83,3 +83,106 @@ def SearchByCategory(request):
     print(products_res)
     
     return render(request , "shopping_cart/results_search.html" , {"products":products_res , "query":cat, "categories":Category.objects.all()})
+
+def SettingsViews(request):
+    return render(request , "shopping_cart/settings.html");
+
+def SettingsCategoriesViews(request):
+    categories = Category.objects.all()
+    return render(request , "shopping_cart/settings_categories.html" , {"categories":categories})
+
+def DeleteCategory(request , cat_id):
+    
+    category = Category.objects.get(id = cat_id)
+    category.delete()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_categories' , args=()))
+
+def RemoveCategory(request , cat_id):
+    
+    category = Category.objects.get(id = cat_id)
+    category.views = False
+    
+    category.save()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_categories' , args=()))
+
+# Update a category
+def UpdateCategory(request , cat_id):
+    
+    category = Category.objects.get(id=cat_id)
+    return render(request , "shopping_cart/update_cat.html" , {"category":category})
+
+# save update category
+def SaveUpdateCategory(request , cat_id):
+    category = Category.objects.get(id=cat_id)
+    
+    category.name = escape(request.POST.get("name"))
+    category.save()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_categories' , args=()))
+
+
+# SETTINGS PRODUCTS 
+
+def SettingsProductsViews(request):
+    products = Product.objects.all()
+    return render(request , "shopping_cart/settings_products.html" , {"products":products})
+
+def DeleteProduct(request , prod_id):
+    
+    product = Product.objects.get(id = prod_id)
+    product.delete()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_products' , args=()))
+
+def RemoveProduct(request , prod_id):
+    
+    product = Product.objects.get(id = prod_id)
+    product.views = False
+    
+    product.save()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_products' , args=()))
+
+# Update a category
+def UpdateProduct(request , prod_id):
+    product = Product.objects.get(id=prod_id)
+    
+    categories = Category.objects.all()
+    return render(request , "shopping_cart/update_product.html" , {"product":product , "categories":categories})
+
+# save update category
+def SaveUpdateProduct(request , prod_id):
+    product = get_object_or_404(Product, id=prod_id)
+    
+    # change value with new values
+    product.name = escape(request.POST.get('name'))
+    product.description = escape(request.POST.get('description'))
+    product.price = escape(request.POST.get('price'))
+    # set image product to None and change after that
+    # product.image = None
+    product.image = request.FILES['image']
+    
+    # delete all categories for product
+    product.category.clear()
+    
+    # attribute new values to product.categories
+    new_categories = request.POST.getlist('categories')
+    for k in new_categories:
+        cat = Category.objects.get(name = k)
+        product.category.add(cat)
+        
+        
+    product.save()
+    # product.name = escape(request.POST.get("name"))
+    # print(request.POST.get('name'))
+    # print(request.POST.get('image'))
+    # print(request.POST.get('description'))
+    # print(request.POST.get('price'))
+    # print(request.POST.getlist('categories'))
+    
+    # print("Id",prod_id)
+    # product.save()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_products' , args=()))

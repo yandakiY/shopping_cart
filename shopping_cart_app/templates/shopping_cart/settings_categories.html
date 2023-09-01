@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Shopping Cart</title>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Settings :</h2>
+    <a href="{% url 'shopCart:Index' %}">Go to home page</a>
+    <div class="main" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <table style="font-size: 25px; border:solid 1px" border="1">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td> {{category.id}} </td>
+                        <td> {{category.name}} </td>
+                        <td> <a style="border: solid 1px;background-color: darkcyan; color: whitesmoke; padding:3px; font-size:18px; border-radius: 5px;" href="{% url 'shopCart:update_category' category.id %}">Update</a> | <a style="border: solid 1px;background-color: black; color: whitesmoke; padding:3px; font-size:18px; border-radius: 5px; " href="{% url 'shopCart:delete_category' category.id %}">Deleted</a> </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

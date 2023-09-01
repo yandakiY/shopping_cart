@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Add a product</h1>
+    <form enctype="multipart/form-data" action="{% url 'shopCart:save_update_product' product.id %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="name">Name :</label>
+            <input type="text" name="name" id="name" value="{{product.name}}">
+        </div>
+        <div>
+            <label for="name">Description :</label>
+            <textarea name="description" id="description" cols="30" rows="10"> {{product.description}} </textarea>
+        </div>
+        <div>
+            <label for="name">Price :</label>
+            <input type="text" name="price" id="price" value="{{product.price}}">
+        </div>
+        <div>
+            <label for="categories">Categories :</label>
+            <!-- Loop for display with checkbox -->
+            {% for category in categories %}
+                {% if category in product.category.all %}
+                    <div>
+                        <label for="">{{category.name}}</label>
+                        <input type="checkbox" checked="" value="{{category}}" name="categories" id="categories">
+                    </div>
+                {%else%}
+                    <div>
+                        <label for="">{{category.name}}</label>
+                        <input type="checkbox" value="{{category}}" name="categories" id="categories">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div>
+            <label for="image">Image of product :</label>
+            <!-- Loop for display with checkbox -->
+            <input type="file" name="image" id="image" required>
+        </div>
+        <div>
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</body>
+</html>
