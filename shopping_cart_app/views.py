@@ -15,8 +15,9 @@ from django.urls import reverse
 # Index Page
 def Index(request):
     # send categories in index page
-    categories = Category.objects.all().filter('name')
-    return render(request , "shopping_cart/index.html" , {"categories":categories})
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    return render(request , "shopping_cart/index.html" , {"categories":categories , "products":products})
 
 # Add a category
 class AddCategory(generic.CreateView):
@@ -65,4 +66,20 @@ def SaveProduct(request):
         return HttpResponseRedirect(reverse('shopCart:Index' , args=()))
     
     return render(request , 'shoppin_cart/create_product.html',{"error":"Error"})
+
+
+def DetailsProduct(request , prod_id):
+    # product which correspond to id product
+    product = Product.objects.get(id = prod_id)
     
+    return render(request , "shopping_cart/details_product.html",{"product":product , "categories":Category.objects.all()})
+
+def SearchByCategory(request):
+    cat = request.POST.get("categories")
+    
+    category = Category.objects.get(name=cat)
+    # products which correspond to category selected
+    products_res = category.product_set.all()
+    print(products_res)
+    
+    return render(request , "shopping_cart/results_search.html" , {"products":products_res , "query":cat, "categories":Category.objects.all()})

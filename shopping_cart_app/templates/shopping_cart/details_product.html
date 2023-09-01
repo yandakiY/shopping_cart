@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Product : {{product.id}} </title>
+</head>
+<body>
+
+    <a href="{% url 'shopCart:create_category' %}">create a category</a>
+    <a href="{% url 'shopCart:create_product' %}">create a product</a>
+
+    <form method="post" action="{% url 'shopCart:search_by' %}">
+        {% csrf_token %}
+        <div>
+            <label for="">Categories</label>
+            <select name="categories">
+                {% for category in categories%}
+                    <option value="{{category}}">{{category}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Search">
+        </div>
+    </form>
+
+    <a href="{% url 'shopCart:Index' %}">Return to home page</a>
+    <!-- <h1>Details : </h1>
+     -->
+    <div style="display: flex; flex-direction: row;justify-content: center;align-items: center; height: 90vh;">
+        <div style="border: solid 1px;display: flex; flex-direction: row;">
+            <div class="img">
+                <img src="{{product.image.url}}" alt="" srcset="" style="width: 500px;height: 550px;">
+            </div>
+            <div class="infos" style="display: flex; flex-direction: column;">
+                <h3>{{product.name}}</h3>
+                <p>{{ product.description }}</p>
+                <p>{{ product.price }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

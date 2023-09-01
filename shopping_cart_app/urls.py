@@ -11,4 +11,8 @@ urlpatterns = [
     # create a product
     path('create_product' , views.AddProduct , name="create_product"),
     path('save_create_product' , views.SaveProduct , name="save_create_product"),
+    # details product
+    path('<int:prod_id>/details_product' , views.DetailsProduct , name="details_product"),
+    # search product by category
+    path('search_by' , views.SearchByCategory , name="search_by")
 ]

@@ -7,7 +7,7 @@ class Category(models.Model):
     views = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.name
+        return f"{self.name}"
     
     
 
@@ -20,3 +20,6 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/' , blank=True , null=True)
     
     category = models.ManyToManyField(Category)
+    
+    def __str__(self) -> str:
+        return f"{self.name}"

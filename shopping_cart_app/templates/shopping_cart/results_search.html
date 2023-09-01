@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Result for search</title>
+    {% load static %}
 </head>
 <body>
     <a href="{% url 'shopCart:create_category' %}">create a category</a>
@@ -21,9 +22,10 @@
             <input type="submit" value="Search">
         </div>
     </form>
+    <h1>Product for : {{query}} </h1>
 
-    <h2>Products : {{products.count}}</h2>
-
+    <h4>Product finded : {{products.count}} </h4>
+    <a href="{% url 'shopCart:Index' %}">Go home</a>
     <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 10px;">
         {%for product in products %}
             <div class="" style="border: solid 1px; padding:10px;display:flex;flex-direction: column;align-items: center;">
@@ -39,6 +41,6 @@
             </div>
         {% endfor %}
     </div>
-
+    
 </body>
 </html>
