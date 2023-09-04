@@ -8,10 +8,10 @@
 <body>
 
     <h2 style="text-align: center;">Settings :</h2>
-    <a href="{% url 'shopCart:Index' %}">Go to home page</a>
-    <div class="main" style="display: flex; flex-direction: column ; justify-content: center; align-items: center; height: 100vh;">
+    <a href="{% url 'shopCart:settings_products' %}">Return</a>
+    <div class="main" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
         
-        <a href="{% url 'shopCart:products_corbeille' %}">Product in corbeille</a>
+        <!-- <a href="{% url 'shopCart:products_corbeille' %}">Product in corbeille</a> -->
 
         <table style="font-size: 25px; border:solid 1px" border="1">
             <thead>
@@ -34,7 +34,7 @@
                                 {{cat}} |
                             {% endfor %}
                         </td>
-                        <td> <a style="border: solid 1px;background-color: darkcyan; color: whitesmoke; padding:3px; font-size:18px; border-radius: 5px;" href="{% url 'shopCart:update_product' product.id %}">Update</a> | <a style="border: solid 1px;background-color: black; color: whitesmoke; padding:3px; font-size:18px; border-radius: 5px; " href="{% url 'shopCart:remove_product' product.id %}">Deleted</a> </td>
+                        <td> <a style="border: solid 1px;background-color: darkcyan; color: whitesmoke; padding:3px; font-size:18px; border-radius: 5px;" href="{% url 'shopCart:restore_product' product.id %}">Restore</a> | <a style="border: solid 1px;background-color: black; color: whitesmoke; padding:3px; font-size:18px; border-radius: 5px; " href="{% url 'shopCart:delete_product' product.id %}">Delete</a> </td>
                     </tr>
                 {% endfor %}
             </tbody>

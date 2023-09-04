@@ -25,12 +25,12 @@
 
     <h2>Products : {{products.count}}</h2>
 
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 10px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px;">
         {%for product in products %}
             <div class="" style="border: solid 1px; padding:10px;display:flex;flex-direction: column;align-items: center;">
                 <img src="{{product.image.url}}" style="width: 100px; height: 100px;" />
                 <div title="{{product.name}}" style="font-weight: bold; font-size: 18px;">{{product.name|slice:"20"}} {% if product.name|length > 20 %}...{%endif%} </div>
-                <div>{{product.price}}</div>
+                <div>{{product.price}} FCFA</div>
 
                 <!-- button -->
                 <div>

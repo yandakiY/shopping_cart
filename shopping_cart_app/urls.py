@@ -31,4 +31,9 @@ urlpatterns = [
     path('<int:prod_id>/remove_product' , views.RemoveProduct , name="remove_product"),
     path('<int:prod_id>/update_product' , views.UpdateProduct , name="update_product"),
     path('<int:prod_id>/save_update_product' , views.SaveUpdateProduct , name="save_update_product"),
+    # products in corbeille
+    path('products_corbeille' , views.ProductsCorbeilleViews , name="products_corbeille"),
+    # restore product in corbeille
+    path('<int:prod_id>/restore_product' , views.RestoreProduct , name="restore_product")
+    
 ]

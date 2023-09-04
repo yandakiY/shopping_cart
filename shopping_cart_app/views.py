@@ -16,7 +16,7 @@ from django.urls import reverse
 def Index(request):
     # send categories in index page
     categories = Category.objects.all()
-    products = Product.objects.all()
+    products = Product.objects.all().filter(views = True)
     return render(request , "shopping_cart/index.html" , {"categories":categories , "products":products})
 
 # Add a category
@@ -126,7 +126,7 @@ def SaveUpdateCategory(request , cat_id):
 # SETTINGS PRODUCTS 
 
 def SettingsProductsViews(request):
-    products = Product.objects.all()
+    products = Product.objects.all().filter(views = True)
     return render(request , "shopping_cart/settings_products.html" , {"products":products})
 
 def DeleteProduct(request , prod_id):
@@ -184,5 +184,22 @@ def SaveUpdateProduct(request , prod_id):
     
     # print("Id",prod_id)
     # product.save()
+    
+    return HttpResponseRedirect(reverse('shopCart:settings_products' , args=()))
+
+
+
+# Products in corbeille
+def ProductsCorbeilleViews(request):
+    products = Product.objects.all().filter(views = False)
+    return render(request , "shopping_cart/products_corbeille.html" , {"products":products})
+
+
+def RestoreProduct(request , prod_id):
+    product = Product.objects.get(id = prod_id)
+     
+    product.views = True
+    
+    product.save()
     
     return HttpResponseRedirect(reverse('shopCart:settings_products' , args=()))
