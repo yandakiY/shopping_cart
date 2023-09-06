@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body, html{
+    margin: 20px;
+    font-family: Prompt , sans-serif;
+    background-color: #EEF1FF;
+}
+
+.navbar{
+    margin-top: 10px;
+    margin: 15px;
+    border-bottom: solid 2px silver;
+    padding-bottom: 10px;
+
+    /* position */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.navbar .logo{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: solid 1px;
+    padding: 10px;
+    font-family: Lato , sans-serif;
+
+    /* position */
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.navbar ul{
+    display: flex;
+    gap: 25px;
+}
+.navbar ul li{
+    list-style: none;
+    text-decoration: none;
+}
+.navbar ul li a{
+    color:black;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: .5s ;
+}
+
+.navbar ul li a:hover{
+    border-bottom: solid black .5px;
+    padding-bottom: 5px;
+    color: black;
+}
+
+.navbar form{
+    display: flex;
+    gap: 5px;
+}
+.navbar form div{
+    display: flex;
+    gap: 5px;
+}
+
+.navbar form div input[type="submit"]{
+    background-color: black;
+    color:white;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: .5s;
+}
+
+.navbar form div input[type="submit"]:hover{
+    background-color: rgba(19, 18, 18, 0.53);
+}
+
+
+.main{
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px;
+}
+
+.card-product{
+    background-color: white;
+    border: solid 1px white; 
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px silver;
+
+
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: .5s;
+}
+
+.card-product:hover{
+    /* background-color: rgb(240, 231, 231); */
+    box-shadow: 3px 3px 3px rgb(39, 38, 38);
+    padding:5px;
+
+}
+
+.card-product .card-product-img{
+    width: 100px; height: 100px;
+}
+
+.card-product .card-product-name{
+    font-weight: bold; font-size: 18px;
+}
+
+.card-buttom{
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.card-buttom .card-buttom-more{
+    border: solid 1px;
+    border-radius: 3px;
+    padding: 5px;
+    color:black;
+}
+
+.card-buttom .card-buttom-add{
+    padding: 9px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #EEF1FF;
+    border: solid .5px #acb1c9;
+    border-radius: 3px;
+
+    transition: .5s;
+}
+
+.card-buttom .card-buttom-add:hover{
+    background-color: #b1bdf3f2;
+    border: solid .5px #acb1c9;
+}
