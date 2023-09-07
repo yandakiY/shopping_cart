@@ -34,7 +34,11 @@ body, html{
     display: flex;
     align-items: baseline;
     gap: 15px;
+
+    cursor: pointer;
 }
+
+
 
 .navbar ul{
     display: flex;
