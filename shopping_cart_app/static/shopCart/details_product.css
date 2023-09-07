@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body, html{
+    margin: 20px;
+    font-family: Prompt , sans-serif;
+    background-color: #EEF1FF;
+}
+
+.navbar{
+    margin-top: 10px;
+    margin: 15px;
+    border-bottom: solid 2px silver;
+    padding-bottom: 10px;
+
+    /* position */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: solid 1px;
+    padding: 10px;
+    font-family: Lato , sans-serif;
+
+    /* position */
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.navbar ul{
+    display: flex;
+    gap: 25px;
+}
+.navbar ul li{
+    list-style: none;
+    text-decoration: none;
+}
+.navbar ul li a{
+    color:black;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: .5s ;
+}
+
+.navbar ul li a:hover{
+    border-bottom: solid black .5px;
+    padding-bottom: 5px;
+    color: black;
+}
+
+
+.navbar ul li .return-home{
+    color:red;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: .5s ;
+}
+
+.navbar ul li .return-home:hover{
+    border-bottom: solid red .5px;
+    padding-bottom: 5px;
+    color: red;
+}
+
+.navbar form{
+    display: flex;
+    gap: 5px;
+}
+.navbar form div{
+    display: flex;
+    gap: 5px;
+}
+
+.navbar form div input[type="submit"]{
+    background-color: black;
+    color:white;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: .5s;
+}
+
+.navbar form div input[type="submit"]:hover{
+    background-color: rgba(19, 18, 18, 0.53);
+}
+
+.main{
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px;
+}
+
+.details-bloc{
+    display: flex; 
+    flex-direction: row;
+    gap:100px;
+    justify-content: center;
+    align-items: center; 
+    height: 60vh;
+
+    text-align: justify;
+
+    background-color: white;
+    border: none;
+
+    transition: .5s;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px silver;
+    
+}
+
+.details-bloc:hover{
+    padding: 5px;
+    text-align: justify;
+    font-size: 25px;
+    box-shadow: 3px 3px 3px rgb(39, 38, 38);
+}
+
+.details-bloc .details-right{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    width: 50%;
+}
+
+.details-bloc .details-right .details-infos{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+}
+
+.details-bloc .details-right .details-infos .details-title{
+    font-size: 35px;
+}
+.details-bloc .details-right .details-infos .details-description{
+    font-size: 15px;
+}
+
+.details-bloc .details-right .details-btn{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+}
+.details-bloc .details-right .details-btn input[type="submit"]{
+    padding: 10px;
+    font-weight: bold;
+    color:white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.details-bloc .details-right .details-btn input[type="submit"]:hover{
+    padding: 15px;
+}
+
+.details-bloc .details-right .details-btn .add_favs{
+    background-color: rgb(156, 69, 45);
+    border: none;
+
+    transition: .5s;
+}
+.details-bloc .details-right .details-btn .add_favs:hover{
+    background-color: rgba(156, 69, 45, 0.824);
+}
+
+.details-bloc .details-right .details-btn .add_cart{
+    background-color: #2d396e;
+    border: none;
+    transition: .5s;
+}
+.details-bloc .details-right .details-btn .add_cart:hover{
+    background-color: #2d396edd;
+    /* padding: 17px; */
+}
+
+.details-bloc .details-img img{
+    margin-left: 30px;
+    width: 300px;
+    height: 250px;
+}
