@@ -55,7 +55,7 @@ def SaveProduct(request):
         categories = request.POST.getlist('categories')
         # add categories
         # for category in categories:
-        for cat in categories :
+        for cat in categories:
             model.category.add(Category.objects.get(name=cat))
     
         # product.save()
@@ -80,7 +80,7 @@ def SearchByCategory(request):
     category = Category.objects.get(name=cat)
     # products which correspond to category selected
     products_res = category.product_set.all()
-    print(products_res)
+    # print(products_res)
     
     return render(request , "shopping_cart/results_search.html" , {"products":products_res , "query":cat, "categories":Category.objects.all()})
 
